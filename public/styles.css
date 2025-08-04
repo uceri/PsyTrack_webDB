@@ -1,0 +1,543 @@
+/* --- Global & Layout --- */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    background-color: #f0f2f5;
+    color: #1c1e21;
+}
+
+#main-header {
+    background-color: #ffffff;
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+    height: 56px;
+    border-bottom: 1px solid #dddfe2;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+#main-header h1 {
+    margin: 0;
+    font-size: 1.5rem;
+    margin-left: 16px;
+}
+
+main {
+    padding: 1.5rem;
+}
+
+/* --- Sidebar --- */
+#sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 200;
+    top: 0;
+    left: 0;
+    background-color: #2c3e50;
+    /* Dark blue-grey */
+    overflow-x: hidden;
+    padding-top: 60px;
+    transition: 0.3s ease-out;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-section {
+    padding: 10px 15px;
+    border-bottom: 1px solid #34495e;
+}
+
+.sidebar-section h3 {
+    color: #ecf0f1;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    margin: 0 0 10px 0;
+    letter-spacing: 1px;
+}
+
+#sidebar a {
+    padding: 8px 0;
+    text-decoration: none;
+    font-size: 1rem;
+    color: #bdc3c7;
+    display: block;
+    transition: 0.2s;
+}
+
+#sidebar a:hover {
+    color: #ffffff;
+}
+
+#close-btn {
+    position: absolute;
+    top: 5px;
+    right: 15px;
+    font-size: 36px;
+    color: #bdc3c7;
+}
+
+#close-btn:hover {
+    color: #ffffff;
+}
+
+#db-edit-link {
+    color: #e74c3c;
+    font-weight: bold;
+}
+
+#db-edit-link:hover {
+    color: #c0392b;
+}
+
+#sidebar a.active {
+    color: #ffffff;
+    font-weight: bold;
+    background-color: #34495e;
+}
+
+/* --- Buttons & Controls --- */
+#open-btn {
+    font-size: 1.5rem;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: #606770;
+}
+
+/* --- Overlay --- */
+#overlay {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    z-index: 199;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: none;
+}
+
+/* --- Alter Switcher Styles --- */
+#alter-switcher {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    /* Spacing between buttons */
+}
+
+.alter-button {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    color: #ecf0f1;
+    background-color: #34495e;
+    border: 1px solid #4a627a;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: left;
+    transition: background-color 0.2s;
+}
+
+.alter-button:hover {
+    background-color: #4a627a;
+}
+
+.alter-button.active {
+    background-color: #1abc9c;
+    /* Teal color for the active alter */
+    color: #ffffff;
+    font-weight: bold;
+    border-color: #1abc9c;
+}
+
+/* --- Disorder Content & Symptom Form --- */
+.disorder-header {
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #dddfe2;
+    margin-bottom: 1.5rem;
+}
+
+.disorder-header h1 {
+    margin: 0;
+}
+
+.symptom-category {
+    margin-bottom: 2rem;
+    background-color: #ffffff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.symptom-category h2 {
+    margin-top: 0;
+    font-size: 1.25rem;
+    color: #1c1e21;
+    border-bottom: 1px solid #e9ebee;
+    padding-bottom: 0.5rem;
+}
+
+.symptom-slider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.symptom-slider label {
+    flex-basis: 250px;
+    /* Give labels a fixed width */
+    flex-shrink: 0;
+}
+
+.symptom-slider input[type="range"] {
+    flex-grow: 1;
+    /* Allow slider to take up remaining space */
+    cursor: pointer;
+}
+
+.symptom-slider .slider-value {
+    font-weight: bold;
+    min-width: 20px;
+    text-align: center;
+}
+
+.form-actions {
+    margin-top: 2rem;
+    text-align: right;
+}
+
+.save-button {
+    background-color: #42b72a;
+    /* Lime Green */
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.save-button:hover {
+    background-color: #36a420;
+}
+
+/* --- Medication Log View --- */
+.med-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    margin-bottom: 1rem;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
+    gap: 1rem;
+}
+
+.med-header {
+    grid-column: 1 / 2;
+}
+
+.med-header h3 {
+    margin: 0 0 0.25rem 0;
+}
+
+.med-header p {
+    margin: 0;
+    color: #606770;
+}
+
+.med-input {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.med-input label {
+    font-weight: bold;
+}
+
+.med-input .med-taken-checkbox {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.med-details {
+    grid-column: 1 / 3;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.med-details input,
+.med-details textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #dddfe2;
+    border-radius: 4px;
+    box-sizing: border-box;
+    /* Important for width */
+}
+
+.med-details textarea {
+    min-height: 60px;
+    resize: vertical;
+}
+
+/* --- Therapy View --- */
+.therapy-section {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.therapy-section h2 {
+    margin-top: 0;
+    border-bottom: 1px solid #e9ebee;
+    padding-bottom: 0.5rem;
+}
+
+.list-item {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #f0f2f5;
+}
+
+.list-item:last-child {
+    border-bottom: none;
+}
+
+.list-item p {
+    margin: 0.25rem 0 0 0;
+    color: #606770;
+    white-space: pre-wrap;
+    /* Respects newlines in notes */
+}
+
+.therapy-form {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e9ebee;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.therapy-form input,
+.therapy-form textarea,
+.therapy-form select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #dddfe2;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 1rem;
+}
+
+.therapy-form button {
+    align-self: flex-end;
+    /* Aligns button to the right */
+}
+
+/* --- Database Editing View --- */
+.entry-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+}
+
+.entry-header {
+    flex-grow: 1;
+}
+
+.entry-header strong {
+    display: block;
+    font-size: 1.1rem;
+}
+
+.entry-header em {
+    color: #606770;
+    font-size: 0.9rem;
+}
+
+.entry-content {
+    flex-grow: 2;
+    padding: 0 1rem;
+    color: #333;
+}
+
+.entry-actions .delete-button {
+    background-color: #e74c3c;
+    /* Red */
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.entry-actions .delete-button:hover {
+    background-color: #c0392b;
+}
+
+.db-tool-section {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+#log-exporter-form {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.chart-container {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+/* --- DB Tools & Log Exporter --- */
+.db-tool-section {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.db-tool-section h2 {
+    margin-top: 0;
+    border-bottom: 1px solid #e9ebee;
+    padding-bottom: 0.5rem;
+}
+
+#log-exporter-form {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+#log-exporter-form input[type="date"] {
+    padding: 8px;
+    border: 1px solid #dddfe2;
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+.loader {
+    border: 4px solid #f3f3f3;
+    /* Light grey */
+    border-top: 4px solid #3498db;
+    /* Blue */
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* --- Modal Styles --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.modal-content h2 {
+    margin-top: 0;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #dddfe2;
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+.modal-actions {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+.secondary-button {
+    background-color: #e4e6eb;
+    color: #4b4f56;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.view-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.view-header h1 {
+    margin: 0;
+}
